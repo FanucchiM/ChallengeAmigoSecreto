@@ -11,6 +11,12 @@ function anadirPersona(){
         return;
     }
 
+    if (personas.includes(nombre)){
+        alert('Nombre repetido, ingrese otro');
+        limpiarCampo('nombre');
+        return;
+    }
+
     // 2. Agregar el nombre al array
     personas.push(nombre);
 
@@ -29,7 +35,7 @@ function anadirPersona(){
     inputAmigo.value = "";
 }
 
-
+//Esta funcion  elige un nombre al azar del array de personas y es el ganador
 function sortear(){
     if (personas.length === 0) {
         alert("Por favor, ingrese nombres para poder hacer el sorteo.");
@@ -40,4 +46,14 @@ function sortear(){
 
     lista.innerHTML = "";
     lista.innerHTML = "🎉 El ganador es: " + personas[ganador] + ", felicitaciones !" + " 🎊";
+}
+
+
+
+//funcion que hice para limpiar el campo, en este caso lo voy a usar para eliminar nombres repetidos
+function limpiarCampo(idElemento){
+    let elementoHTML = document.getElementById(idElemento);
+    elementoHTML.value = ''; //Elimino el valor ingresado
+    elementoHTML.setAttribute('placeHolder', 'Escribe un nombre'); //Reestablezco el mensaje original para el ingreso de datos
+    return;
 }
